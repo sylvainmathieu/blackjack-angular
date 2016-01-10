@@ -1,0 +1,32 @@
+<div ng-class="[playerType.toLowerCase() + player.number, 'playerHand', player.result, {
+		currentTurn: player.currentTurn,
+		blackjack: player.score == 21,
+		bust: player.score > 21
+	}]">
+
+	<h2>{{playerType}} {{player.number}}</h2>
+
+	<div class="square">
+		<img ng-repeat="card in player.hand track by $index" ng-src="images/cards/{{card | cardFileName}}" alt="test" class="card">
+	</div>
+
+	<div class="controls">
+
+		<div class="score" ng-show="player.score">{{player.score}}</div>
+
+		<div class="blackjack" ng-show="player.score == 21">Blackjack!</div>
+		<div class="bust" ng-show="player.score > 21">Bust</div>
+
+		<div ng-switch="player.result">
+			<div class="result" ng-switch-when="win">Win</div>
+			<div class="result" ng-switch-when="push">Push</div>
+			<div class="result" ng-switch-when="lose">Lose</div>
+		</div>
+
+		<div ng-show="player.currentTurn" class="buttons">
+			<button type="button" ng-click="hit(player)" class="hit">Hit</button>
+			<button type="button" ng-click="stick(player)" class="stick">Stick</button>
+		</div>
+
+	</div>
+</div>

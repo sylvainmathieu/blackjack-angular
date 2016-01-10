@@ -1,0 +1,27 @@
+<html ng-app="blackjackApp">
+<head>
+	<title>Blackjack</title>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body ng-controller="GameController">
+	<div id="table">
+
+		<div id="header">
+			<h1>Blackjack</h1>
+			<button type="button" ng-hide="gameInProgress" class="newRound" ng-click="newRound()">New round</button>
+		</div>
+
+		<blackjack-player player-data="dealer" player-type="'Dealer'" hit="hit" stick="stick"></blackjack-player>
+
+		<blackjack-player player-data="player" player-type="'Player'" hit="hit" stick="stick" ng-repeat="player in players"></blackjack-player>
+
+	</div>
+
+	<script src="/bower_components/angular/angular.js"></script>
+	<script type="text/javascript" src="/app/services/cardsService.js"></script>
+	<script type="text/javascript" src="/app/filters/gameFilters.js"></script>
+	<script type="text/javascript" src="/app/directives/playerDirective.js"></script>
+	<script type="text/javascript" src="/app/controllers/gameController.js"></script>
+
+</body>
+</html>
